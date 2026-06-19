@@ -28,6 +28,42 @@ PSMS is **not**:
 - a recommendation letter tracking system
 - a registrar system
 
+##PSMS Framework
+
+The system is organized around five pillars:
+
+1. Engagement
+   - Attendance
+   - Cohort Meetings
+   - Workshops
+   - Seminars
+   - Retreats
+
+2. Support
+   - High Touch Mentor Meetings
+   - Well-Being Meetings
+   - MedOpp Advising
+   - CASE Support
+
+3. Progress
+   - GPA
+   - Science GPA
+   - Math/Science GPA
+   - Requirements
+
+4. Development
+   - Shadowing
+   - Clinical Experiences
+   - Research
+   - Service
+   - Leadership
+   - Professional Development
+
+5. Intervention
+   - Alerts
+   - Follow-Ups
+   - Resolution Tracking
+
 ## Supported Programs
 
 - JPAWS
@@ -73,13 +109,14 @@ OneDrive stores:
 
 ## Core Navigation
 
-Version 1 focuses on five primary tabs:
+Version 1 focuses on:
 
 1. Dashboard
-2. Meetings
-3. Participants
-4. Courses
-5. Alerts
+2. Participants
+3. Meetings
+4. Attendance
+5. Academics
+6. Alerts
 
 Secondary areas:
 

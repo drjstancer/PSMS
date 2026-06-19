@@ -2,7 +2,7 @@
 
 The **Pathways Success Management System (PSMS)** is a local-first participant success management application for the CaPS pathways ecosystem.
 
-PSMS supports advising, mentoring, academic monitoring, semester experience tracking, requirement tracking, intervention alerts, and program evaluation for pathway and enrichment programs.
+PSMS supports advising, mentoring, academic monitoring, attendance tracking, semester experience tracking, requirement tracking, intervention alerts, and program evaluation for pathway and enrichment programs.
 
 ## Fixed Project Vision
 
@@ -12,6 +12,7 @@ It tracks:
 
 - participants
 - programs and participant types
+- attendance and engagement
 - academic coursework
 - semester experience summaries
 - meetings
@@ -28,7 +29,7 @@ PSMS is **not**:
 - a recommendation letter tracking system
 - a registrar system
 
-##PSMS Framework
+## PSMS Framework
 
 The system is organized around five pillars:
 
@@ -137,6 +138,7 @@ Build the foundation:
 - participant search
 - participant profile
 - meeting entry
+- attendance tracking foundation
 - placeholder dashboard
 
 ## Build Principle

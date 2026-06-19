@@ -1,4 +1,9 @@
 import React from 'react';
+import EngagementCard from './EngagementCard';
+import SupportCard from './SupportCard';
+import ProgressCard from './ProgressCard';
+import DevelopmentCard from './DevelopmentCard';
+import InterventionCard from './InterventionCard';
 
 export default function ParticipantProfile() {
   return (
@@ -11,20 +16,11 @@ export default function ParticipantProfile() {
       <h3>Program Participation</h3>
       <p>Program • Participant Type • Cohort • Status</p>
 
-      <h3>Engagement</h3>
-      <p>Attendance Summary • Required Events • Attendance Rate</p>
-
-      <h3>Support</h3>
-      <p>Meeting Count • Last Meeting • Outstanding Follow-Ups</p>
-
-      <h3>Progress</h3>
-      <p>Overall GPA • Science GPA • Math/Science GPA</p>
-
-      <h3>Development</h3>
-      <p>Shadowing • Clinical • Research • Service • Leadership</p>
-
-      <h3>Intervention</h3>
-      <p>Active Alerts • Open Concerns • Resolution Status</p>
+      <EngagementCard />
+      <SupportCard />
+      <ProgressCard />
+      <DevelopmentCard />
+      <InterventionCard />
     </div>
   );
 }

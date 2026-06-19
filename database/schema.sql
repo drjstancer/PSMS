@@ -255,6 +255,69 @@ CREATE INDEX IF NOT EXISTS idx_meetings_program ON Meetings(ProgramID);
 CREATE INDEX IF NOT EXISTS idx_meetings_date ON Meetings(MeetingDate);
 
 -- ============================================================
+-- Engagement Tracking
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS Events (
+  EventID INTEGER PRIMARY KEY AUTOINCREMENT,
+  ProgramID INTEGER NOT NULL,
+  EventName TEXT NOT NULL,
+  EventType TEXT NOT NULL CHECK (
+    EventType IN (
+      'Cohort Meeting',
+      'Workshop',
+      'Seminar',
+      'Retreat',
+      'Professional Development',
+      'MCAT Session',
+      'Service Event',
+      'Other'
+    )
+  ),
+  EventDate TEXT NOT NULL,
+  RequiredAttendance INTEGER NOT NULL DEFAULT 0,
+  HoursAwarded REAL DEFAULT 0,
+  Notes TEXT,
+  CreatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UpdatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (ProgramID) REFERENCES Programs(ProgramID)
+);
+
+CREATE INDEX IF NOT EXISTS idx_events_program
+ON Events(ProgramID);
+
+CREATE INDEX IF NOT EXISTS idx_events_date
+ON Events(EventDate);
+
+CREATE TABLE IF NOT EXISTS Attendance (
+  AttendanceID INTEGER PRIMARY KEY AUTOINCREMENT,
+  ParticipantID INTEGER NOT NULL,
+  EventID INTEGER NOT NULL,
+  AttendanceStatus TEXT NOT NULL CHECK (
+    AttendanceStatus IN (
+      'Attended',
+      'Excused',
+      'Unexcused',
+      'No Show'
+    )
+  ),
+  AttendanceNotes TEXT,
+  RecordedByStaffID INTEGER,
+  CreatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UpdatedAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (ParticipantID) REFERENCES Participants(ParticipantID),
+  FOREIGN KEY (EventID) REFERENCES Events(EventID),
+  FOREIGN KEY (RecordedByStaffID) REFERENCES Staff(StaffID),
+  UNIQUE (ParticipantID, EventID)
+);
+
+CREATE INDEX IF NOT EXISTS idx_attendance_participant
+ON Attendance(ParticipantID);
+
+CREATE INDEX IF NOT EXISTS idx_attendance_event
+ON Attendance(EventID);
+
+-- ============================================================
 -- Alerts and Interventions
 -- ============================================================
 
@@ -263,7 +326,7 @@ CREATE TABLE IF NOT EXISTS Alerts (
   ParticipantID INTEGER NOT NULL,
   ProgramID INTEGER,
   AlertDate TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  AlertType TEXT NOT NULL CHECK (AlertType IN ('Academic Concern', 'Missing Meeting', 'Missing Documentation', 'Missing Reflection', 'Missing Requirement', 'Missing Semester Update', 'Low Engagement', 'Other')),
+  AlertType TEXT NOT NULL CHECK (AlertType IN ('Academic Concern','Missing Attendance', 'Missing Meeting', 'Missing Documentation', 'Missing Reflection', 'Missing Requirement', 'Missing Semester Update', 'Low Engagement', 'Other')),
   Severity TEXT NOT NULL DEFAULT 'Medium' CHECK (Severity IN ('Low', 'Medium', 'High', 'Critical')),
   AlertDescription TEXT NOT NULL,
   Resolved INTEGER NOT NULL DEFAULT 0,

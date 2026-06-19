@@ -1,4 +1,5 @@
 import React from 'react';
+import ParticipantProfile from '../components/ParticipantProfile';
 
 export default function Participants() {
   return (
@@ -22,15 +23,7 @@ export default function Participants() {
         </thead>
       </table>
 
-      <h2>Participant 360 Summary</h2>
-      <ul>
-        <li>Participant Information</li>
-        <li>Program Participation</li>
-        <li>Academic Snapshot</li>
-        <li>Attendance Snapshot</li>
-        <li>Meeting Snapshot</li>
-        <li>Active Alerts</li>
-      </ul>
+      <ParticipantProfile />
     </div>
   );
 }
